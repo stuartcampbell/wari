@@ -20,7 +20,6 @@ arch)
   # Spotify is in AUR 
   ;;
 *)
-  echo Could not add Spotify Repo for this distribution"
-  exit 1
+  echo "Could not add Spotify Repo for this distribution"
   ;;
 esac
