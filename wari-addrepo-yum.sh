@@ -18,7 +18,7 @@ add_yum_repo_url() {
     URL=${1}
 
     # Extract the filename
-    REPOFILENAME=${URL##/*/}
+    REPOFILENAME=${URL##*/}
 
     # Determine if we are using dnf or yum
     DNF=$(get_dnf)
