@@ -15,6 +15,8 @@ get_script_dir () {
 
 WARI_ROOT=$(get_script_dir)
 
+echo "Running wari from $WARI_ROOT"
+
 # Now let's determine what distro we are running on.
 if [ -f "/etc/os-release" ]; then
   . /etc/os-release
