@@ -10,8 +10,20 @@ get_dnf () {
 }
 
 add_yum_repo_rpm() {
-    echo "sudo ${DNF} install $@"
-    sudo ${DNF} install $@
+    URL=${1}
+
+    # Extract the filename
+    RPM_PACKAGE_FULLNAME=${URL##*/}
+    RPM_PACKAGE_NAME="${RPM_PACKAGE_FULLNAME%.*}"
+
+    if ! rpm -q --quiet $RPM_PACKAGE_NAME; then
+      echo "sudo ${DNF} -y install $@"
+      sudo ${DNF} -y install $@
+    else
+      # the RPM is already installed.
+      echo "$RPM_PACKAGE_NAME is already installed"
+      return 0
+    fi
 }
 
 add_yum_repo_url() {
@@ -33,11 +45,12 @@ add_yum_repo_url() {
         echo "Something went wrong"
         exit 1
       fi
-      echo "sudo ${CMD} --add-repo=${URL}"
+      #echo "sudo ${CMD} --add-repo=${URL}"
       sudo ${CMD} --add-repo=${URL}
     else
       # .repo file is already installed - do nothing
-      echo "Repofile $REPOFILENAME already exists"
+      #echo "Repofile $REPOFILENAME already exists"
+      return 0
     fi
 }
 
