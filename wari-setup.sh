@@ -15,4 +15,14 @@ get_script_dir () {
 
 WARI_ROOT=$(get_script_dir)
 
+# Now let's determine what distro we are running on.
+if [ -f "/etc/os-release" ]; then
+  . /etc/os-release
+  WARI_DISTRO=$ID
+  WARI_DISTRO_VERSION=$VERSION_ID
+else 
+  echo "/etc/os-release not available - your distro is too old! Upgrade! :-)"
+  exit -1
+fi
+
 
