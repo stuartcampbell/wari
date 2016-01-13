@@ -1,0 +1,26 @@
+#!/bin/sh
+
+case "$WARI_DISTRO" in
+fedora)
+  add_yum_repo_url http://negativo17.org/repos/fedora-spotify.repo
+  ;;
+rhel)
+  add_yum_repo_url http://negativo17.org/repos/epel-spotify.repo 
+  ;;
+centos)
+  add_yum_repo_url http://negativo17.org/repos/epel-spotify.repo 
+  ;;
+opensuse)
+  ;;
+ubuntu)
+  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+  echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+  ;;
+arch)
+  # Spotify is in AUR 
+  ;;
+*)
+  echo Could not add Spotify Repo for this distribution"
+  exit 1
+  ;;
+esac
