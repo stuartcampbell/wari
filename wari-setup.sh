@@ -25,4 +25,7 @@ else
   exit -1
 fi
 
+# Let's source all our helper libraries
+. $WARI_ROOT/wari-addrepo.sh
+. $WARI_ROOT/wari-addrepo-yum.sh 
 
