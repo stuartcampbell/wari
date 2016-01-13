@@ -33,7 +33,7 @@ REPOS=$@
 echo "Setting up repositories: $REPOS"
 for ITEM in $REPOS
 do
-    if [ ! -f "$REPO_DIR/$ITEM.repod" ]; then
+    if [ ! -f "$REPO_DIR/$ITEM.repo" ]; then
         case "$ITEM" in
             google-chrome)
                 echo "Get the google-chrome rpm from https://www.google.com/chrome/browser/desktop/index.html"
@@ -54,9 +54,9 @@ do
 
             fedora-nvidia)
                 if [ ! $(rpm -E %fedora) == "%fedora" ]; then
-                    add_repo_rpm --nogpgcheck  http://negativo17.org/repos/fedora-nvidia.repo
+                    add_repo_conf  http://negativo17.org/repos/fedora-nvidia.repo
                 elif [ ! $(rpm -E %rhel) == "%rhel" ]; then
-                    add_repo_rpm --nogpgcheck http://negativo17.org/repos/epel-nvidia.repo
+                    add_repo_conf http://negativo17.org/repos/epel-nvidia.repo
                 else
                     echo "Do not have url for fedora-nvidia"
                     exit 1
