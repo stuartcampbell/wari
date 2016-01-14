@@ -25,7 +25,7 @@ add_yum_repo_rpm() {
       sudo ${DNF} -y install $@
     else
       # the RPM is already installed.
-      echo "$RPM_PACKAGE_NAME is already installed"
+      # echo "$RPM_PACKAGE_NAME is already installed"
       return 0
     fi
 }
