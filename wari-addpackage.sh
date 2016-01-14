@@ -25,4 +25,38 @@ add_package() {
   esac
 }
 
+add_packages_from_file() {
+  FILENAME=${1}
+  #echo "add_packages_from_file(): Checking for file : ${FILENAME}"
+  if [ -f $FILENAME ]; then
+    add_package $(cat $FILENAME)
+  else
+    echo "The expected list of packages files ($FILENAME) does not exist"
+    exit 1
+  fi
+}
+
+add_packages_from_distro_file() {
+  case "$WARI_DISTRO" in
+    fedora)
+      add_packages_from_file fedora-packagelist.txt
+      ;;
+    rhel)
+      add_packages_from_file redhat-packagelist.txt
+      ;;
+    centos)
+      add_packages_from_file "redhat-packagelist.txt"
+      ;;
+    opensuse)
+      add_packages_from_file "opensuse-packagelist.txt"
+      ;;
+    ubuntu)
+      add_packages_from_file "ubuntu-packagelist.txt"
+      ;;
+    arch)
+      ;;
+    *)
+      ;;
+  esac
+}
 
