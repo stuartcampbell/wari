@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Requires EPEL to be enabled
+add-repo epel
+
+case "$WARI_DISTRO" in
+fedora)
+  ;;
+rhel)
+  add_yum_repo_rpm http://li.nux.ro/download/nux/dextop/el$(rpm -E %rhel)/x86_64/nux-dextop-release-0-1.el$(rpm -E %rhel).nux.noarch.rpm
+  ;;
+centos)
+  add_yum_repo_rpm http://li.nux.ro/download/nux/dextop/el$(rpm -E %rhel)/x86_64/nux-dextop-release-0-1.el$(rpm -E %rhel).nux.noarch.rpm
+  ;;
+opensuse)
+  ;;
+ubuntu)
+  ;;
+arch)
+  ;;
+*)
+  ;;
+esac
