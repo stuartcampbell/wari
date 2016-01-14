@@ -16,7 +16,7 @@ centos)
 opensuse)
   ;;
 ubuntu)
-  sudo add-apt-repository ppa:mantid/mantid
+  sudo add-apt-repository -y ppa:mantid/mantid
   ;;
 arch)
   ;;
