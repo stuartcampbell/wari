@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Arc Theme Repos
+
+case "$WARI_DISTRO" in
+fedora)
+  add_yum_repo_url http://download.opensuse.org/repositories/home:Horst3180/Fedora_$(rpm -E %fedora)/home:Horst3180.repo
+  ;;
+rhel)
+  ;;
+centos)
+  ;;
+opensuse)
+  case "$WARI_DISTRO_VERSION" in
+  42.1)
+    sudo zypper addrepo http://download.opensuse.org/repositories/home:Horst3180/openSUSE_Leap_42.1/home:Horst3180.repo
+    ;;
+  *)
+    # assuming tumbleweed
+    zypper addrepo http://download.opensuse.org/repositories/home:Horst3180/openSUSE_Tumbleweed/home:Horst3180.repo
+    ;;
+  esac
+  ;;
+ubuntu)
+  sudo add-apt-repository -y 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_$WARI_DISTRO_VERSION/ /'
+  ;;
+arch)
+  ;;
+*)
+  ;;
+esac
+
