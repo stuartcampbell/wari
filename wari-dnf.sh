@@ -6,7 +6,7 @@ get_dnf () {
     if [ $(command -v dnf) ]; then
         DNF=`which dnf`
     fi
-    echo ${DNF}
+    #echo ${DNF}
 }
 
 add_copr_repo() {
@@ -56,4 +56,12 @@ add_yum_repo_url() {
       #echo "Repofile $REPOFILENAME already exists"
       return 0
     fi
+}
+
+add_yum_package() {
+  if [ -z "${DNF}" ]; then
+    get_dnf
+  fi
+  echo "sudo ${DNF} install -y ${1}"
+  #sudo ${DNF} install -y ${1}
 }
