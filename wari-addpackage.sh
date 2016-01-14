@@ -15,6 +15,7 @@ add_package() {
       sudo zypper install ${@}
       ;;
     ubuntu)
+      # TODO: if the arg is a URL then we need to grab it and use dpkg locally
       sudo apt-get -y install ${@}
       ;;
     arch)
