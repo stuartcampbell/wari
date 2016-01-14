@@ -6,13 +6,13 @@ add_package() {
       add_yum_package ${@}
       ;;
     rhel)
-      echo "add_yum_package ${@}"
       add_yum_package ${@}
       ;;
     centos)
       add_yum_package ${@}
       ;;
     opensuse)
+      sudo zypper install ${@}
       ;;
     ubuntu)
       sudo apt-get -y install ${@}
