@@ -5,6 +5,7 @@ fedora)
   ;;
 rhel)
   add_yum_repo_rpm https://www.softwarecollections.org/en/scls/rhscl/devtoolset-3/epel-$(rpm -E %rhel)-x86_64/download/rhscl-devtoolset-3-epel-$(rpm -E %rhel)-x86_64.noarch.rpm
+  ;;
 centos)
   # TODO: make this use whatever package install syntax we choose.
   sudo yum install centos-release-scl-rh

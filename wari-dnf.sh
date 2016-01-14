@@ -6,10 +6,13 @@ get_dnf () {
     if [ $(command -v dnf) ]; then
         DNF=`which dnf`
     fi
-    echo ${DNF}
+    #echo ${DNF}
 }
 
 add_copr_repo() {
+  if [ -z "${DNF}" ]; then
+    get_dnf
+  fi
   sudo ${DNF} -y copr enable $@
 }
 
@@ -56,4 +59,15 @@ add_yum_repo_url() {
       #echo "Repofile $REPOFILENAME already exists"
       return 0
     fi
+}
+
+add_yum_package() {
+  if [ ! $(rpm -q --quiet ${1}) ]; then
+      return 0
+  fi
+  if [ -z "${DNF}" ]; then
+    get_dnf
+  fi
+  #echo "sudo ${DNF} install -y ${1}"
+  sudo ${DNF} install -y ${1}
 }

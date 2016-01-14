@@ -2,7 +2,10 @@
 
 case "$WARI_DISTRO" in
 fedora)
-  add_copr_repo mantid/mantid
+  # TODO put the information into add_copr_repo
+  if [ ! -f ${REPO_DIR}/_copr_mantid-mantid.repo ]; then
+      add_copr_repo mantid/mantid
+  fi
   ;;
 rhel)
   add_yum_repo_url https://copr.fedoraproject.org/coprs/mantid/mantid/repo/epel-$(rpm -E %rhel)/mantid-mantid-epel-$(rpm -E %rhel).repo
