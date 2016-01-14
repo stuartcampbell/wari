@@ -1,0 +1,32 @@
+#!/bin/sh
+
+
+case "$WARI_DISTRO" in
+fedora)
+  sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
+  add_package https://dl.google.com/linux/direct/google-chrome-stable_current_$(uname -i).rpm
+  ;;
+rhel)
+  sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
+  add_package https://dl.google.com/linux/direct/google-chrome-stable_current_$(uname -i).rpm
+  ;;
+centos)
+  sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
+  add_package https://dl.google.com/linux/direct/google-chrome-stable_current_$(uname -i).rpm
+  ;;
+opensuse)
+  sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
+  add_package https://dl.google.com/linux/direct/google-chrome-stable_current_$(uname -i).rpm
+  ;;
+ubuntu)
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -qO /tmp/chrome.deb
+  sudo dpkg -i /tmp/chrome.deb
+  sudo apt-get -yf install 
+  rm /tmp/chrome.deb
+  ;;
+arch)
+  ;;
+*)
+  ;;
+esac
+
