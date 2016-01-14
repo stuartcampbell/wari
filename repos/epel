@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# This repo is only valid for EL (i.e. CentOS and RHEL)
+
 case "$WARI_DISTRO" in
 fedora)
   ;;
