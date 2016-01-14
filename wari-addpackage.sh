@@ -3,17 +3,19 @@
 add_package() {
   case "$WARI_DISTRO" in
     fedora)
-      add_yum_package ${1}
+      add_yum_package ${@}
       ;;
     rhel)
-      add_yum_package ${1}
+      echo "add_yum_package ${@}"
+      add_yum_package ${@}
       ;;
     centos)
-      add_yum_package ${1}
+      add_yum_package ${@}
       ;;
     opensuse)
       ;;
     ubuntu)
+      sudo apt-get -y install ${@}
       ;;
     arch)
       ;;
@@ -21,3 +23,5 @@ add_package() {
       ;;
   esac
 }
+
+

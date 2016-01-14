@@ -10,7 +10,6 @@ get_dnf () {
 }
 
 
-
 add_copr_repo() {
   if [ -z "${DNF}" ]; then
     get_dnf
@@ -64,12 +63,12 @@ add_yum_repo_url() {
 }
 
 add_yum_package() {
-  if rpm -q --quiet ${1}; then
+  if rpm -q --quiet ${@}; then
       return 0
   fi
   if [ -z "${DNF}" ]; then
     get_dnf
   fi
-  #echo "sudo ${DNF} install -y ${1}"
-  sudo ${DNF} install -y ${1}
+  echo "sudo ${DNF} install -y ${@}"
+  sudo ${DNF} install -y ${@}
 }
