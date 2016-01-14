@@ -27,6 +27,12 @@ else
   exit -1
 fi
 
+if [[ "$(uname -m)" = "x86_64" ]]; then
+	WARI_ARCH="64"
+else
+	WARI_ARCH="32"
+fi
+
 # Let's source all our helper libraries
 . $WARI_ROOT/wari-addrepo.sh
 . $WARI_ROOT/wari-dnf.sh
