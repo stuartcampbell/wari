@@ -1,0 +1,20 @@
+#!/bin/sh
+
+case "$WARI_DISTRO" in
+fedora)
+  ;;
+rhel)
+  add_yum_repo_rpm http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+  ;;
+centos)
+  add_yum_repo_rpm http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+  ;;
+opensuse)
+  ;;
+ubuntu)
+  ;;
+arch)
+  ;;
+*)
+  ;;
+esac
