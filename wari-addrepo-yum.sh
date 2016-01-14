@@ -9,6 +9,10 @@ get_dnf () {
     echo ${DNF}
 }
 
+add_copr_repo() {
+  sudo ${DNF} -y copr enable $@
+}
+
 add_yum_repo_rpm() {
     URL=${1}
 
@@ -53,4 +57,3 @@ add_yum_repo_url() {
       return 0
     fi
 }
-
