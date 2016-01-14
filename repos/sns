@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Spallation Neutron Source internal repo
+
+case "$WARI_DISTRO" in
+fedora)
+  add_yum_repo_url http://packages.sns.gov/distros/fedora/$(rpm -E %fedora)/sns/sns.repo
+  ;;
+rhel)
+  add_yum_repo_url http://packages.sns.gov/distros/rhel/$(rpm -E %rhel)/sns/sns.repo
+  ;;
+centos)
+  add_yum_repo_url http://packages.sns.gov/distros/rhel/$(rpm -E %rhel)/sns/sns.repo
+  ;;
+opensuse)
+  ;;
+ubuntu)
+  ;;
+arch)
+  ;;
+*)
+  ;;
+esac
+
+o
