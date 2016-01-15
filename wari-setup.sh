@@ -13,6 +13,19 @@ get_script_dir () {
      echo "$DIR"
 }
 
+url_exists () {
+  URL=${1}
+
+  if [ $(command -v curl) ]; then
+    return $(! curl --output /dev/null --silent --head --fail "$URL")
+  elif [ $(command -v wget) ]; then
+    return $(! wget --spider "$URL" 2> /dev/null)
+  else
+    # can't be checked so just say yes
+    return 0
+  fi
+}
+
 WARI_ROOT=$(get_script_dir)
 
 echo "Running wari from $WARI_ROOT"
