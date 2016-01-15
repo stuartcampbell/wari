@@ -45,13 +45,13 @@ add_packages_from_distro_file() {
       add_packages_from_file redhat-packagelist.txt
       ;;
     centos)
-      add_packages_from_file "redhat-packagelist.txt"
+      add_packages_from_file redhat-packagelist.txt
       ;;
     opensuse)
-      add_packages_from_file "opensuse-packagelist.txt"
+      add_packages_from_file opensuse-packagelist.txt
       ;;
     ubuntu)
-      add_packages_from_file "ubuntu-packagelist.txt"
+      add_packages_from_file ubuntu-packagelist.txt
       ;;
     arch)
       ;;
