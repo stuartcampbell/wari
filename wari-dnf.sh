@@ -41,7 +41,7 @@ add_yum_repo_url() {
     REPOFILENAME=${URL##*/}
 
     # Determine if we are using dnf or yum
-    DNF=$(get_dnf)
+    get_dnf
 
     # Check if the .repo file is already installed
     if [ ! -f "$REPO_DIR/$REPOFILENAME" ]; then
