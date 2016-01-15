@@ -53,8 +53,13 @@ add_yum_repo_url() {
         echo "Something went wrong"
         exit 1
       fi
-      #echo "sudo ${CMD} --add-repo=${URL}"
-      sudo ${CMD} --add-repo=${URL}
+
+      if $(url_exists "${URL}") ; then
+        #echo "sudo ${CMD} --add-repo=${URL}"
+        sudo ${CMD} --add-repo=${URL}
+      else
+        echo "failed to find url ${URL}"
+      fi
     else
       # .repo file is already installed - do nothing
       #echo "Repofile $REPOFILENAME already exists"
