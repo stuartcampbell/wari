@@ -22,7 +22,10 @@ opensuse)
   esac
   ;;
 ubuntu)
-  sudo add-apt-repository -y 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_$WARI_DISTRO_VERSION/ /'
+  wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_15.10/Release.key
+  sudo apt-key add - < Release.key  
+  rm -f Release.key
+  sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_${WARI_DISTRO_VERSION}/ /' > /etc/apt/sources.list.d/arc-theme.list"
   ;;
 arch)
   ;;
