@@ -1,0 +1,24 @@
+#!/bin/sh
+
+case "$WARI_DISTRO" in
+fedora)
+  # TODO put the information into add_copr_repo
+  if [ ! -f ${REPO_DIR}/_copr_sic-backports-el7.repo ]; then
+      add_copr_repo sic/backports-el7
+  fi
+  ;;
+rhel)
+  add_yum_repo_url https://copr.fedoraproject.org/coprs/sic/backports-el7/repo/epel-$(rpm -E %rhel)/sic-backports-el7-epel-$(rpm -E %rhel).repo
+  ;;
+centos)
+  add_yum_repo_url https://copr.fedoraproject.org/coprs/sic/backports-el7/repo/epel-$(rpm -E %rhel)/sic-backports-el7-epel-$(rpm -E %rhel).repo
+  ;;
+opensuse)
+  ;;
+ubuntu)
+  ;;
+arch)
+  ;;
+*)
+  ;;
+esac
