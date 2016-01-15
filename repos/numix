@@ -1,0 +1,19 @@
+#!/bin/sh
+
+case "$WARI_DISTRO" in
+fedora)
+  ;;
+rhel)
+  ;;
+centos)
+  ;;
+opensuse)
+  ;;
+ubuntu)
+  sudo add-apt-repository -y ppa:numix/ppa
+  ;;
+arch)
+  ;;
+*)
+  ;;
+esac

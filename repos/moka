@@ -1,0 +1,30 @@
+#!/bin/sh
+
+case "$WARI_DISTRO" in
+fedora)
+  add_yum_repo_url http://download.opensuse.org/repositories/home:snwh:moka-project/Fedora_$(rpm -E %fedora)/home:snwh:moka-project.repo
+  ;;
+rhel)
+  ;;
+centos)
+  ;;
+opensuse)
+  case "$WARI_DISTRO_VERSION" in
+  13.2)
+    sudo zypper addrepo http://download.opensuse.org/repositories/home:snwh:moka-project/openSUSE_13.2/home:snwh:moka-project.repo
+    ;;
+  *)
+    # assuming tumbleweed
+    zypper addrepo http://download.opensuse.org/repositories/home:snwh:moka-project/openSUSE_Tumbleweed/home:snwh:moka-project.repo
+    ;;
+  esac
+  ;;
+ubuntu)
+  sudo add-apt-repository -y ppa:moka/stable
+  ;;
+arch)
+  # AUR package: moka-icon-theme-git
+  ;;
+*)
+  ;;
+esac
