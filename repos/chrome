@@ -1,6 +1,8 @@
 #!/bin/sh
 
-
+if [ $(command -v google-chrome) ]; then
+  echo "Chrome already installed - skipping..."
+else
 case "$WARI_DISTRO" in
 fedora)
   sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
@@ -29,4 +31,4 @@ arch)
 *)
   ;;
 esac
-
+fi
