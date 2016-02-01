@@ -38,26 +38,10 @@ add_packages_from_file() {
 }
 
 add_packages_from_distro_file() {
-  case "$WARI_DISTRO" in
-    fedora)
-      add_packages_from_file fedora-packagelist.txt
-      ;;
-    rhel)
-      add_packages_from_file redhat-packagelist.txt
-      ;;
-    centos)
-      add_packages_from_file redhat-packagelist.txt
-      ;;
-    opensuse)
-      add_packages_from_file opensuse-packagelist.txt
-      ;;
-    ubuntu)
-      add_packages_from_file ubuntu-packagelist.txt
-      ;;
-    arch)
-      ;;
-    *)
-      ;;
-  esac
+  FILENAME="wari-pacakgelist-$WARI_DISTRO.txt"
+  if [ -f $FILENAME ]; then
+    add_packages_from_file $FILENAME
+  #else
+  #  echo "Did not find list of packages '$FILENAME'"
+  fi
 }
-
