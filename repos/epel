@@ -6,10 +6,10 @@ case "$WARI_DISTRO" in
 fedora)
   ;;
 rhel)
-  add_yum_repo_rpm http://download.fedoraproject.org/pub/epel/$(rpm -E %rhel)/x86_64/e/epel-release-$(rpm -E %rhel)-5.noarch.rpm
+  add_yum_repo_rpm http://download.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
   ;;
 centos)
-  add_yum_repo_rpm http://download.fedoraproject.org/pub/epel/$(rpm -E %rhel)/x86_64/e/epel-release-$(rpm -E %rhel)-5.noarch.rpm
+  add_yum_repo_rpm http://download.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
   ;;
 opensuse)
   ;;
