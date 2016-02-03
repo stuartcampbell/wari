@@ -38,7 +38,7 @@ add_packages_from_file() {
 }
 
 add_packages_from_distro_file() {
-  FILENAME="wari-pacakgelist-$WARI_DISTRO.txt"
+  FILENAME="wari-packagelist-$WARI_DISTRO.txt"
   if [ -f $FILENAME ]; then
     add_packages_from_file $FILENAME
   #else
