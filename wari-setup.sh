@@ -4,7 +4,12 @@ url_exists () {
   URL=${1}
 
   if [ $(command -v curl) ]; then
-    return $(! curl --output /dev/null --silent --head --fail "$URL")
+    if curl --output /dev/null --silent --head --fail "$URL"; then
+      # URL exists
+      return 0
+    else
+      return 1
+    fi
   elif [ $(command -v wget) ]; then
     return $(! wget --spider "$URL" 2> /dev/null)
   else
@@ -31,7 +36,7 @@ fi
 
 if [ -z "$WARI_ROOT" ]; then
   echo "Please set WARI_ROOT"
-  exit 1
+  return 1
 fi
 
 echo "WARI_ROOT: $WARI_ROOT"
