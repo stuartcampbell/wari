@@ -1,0 +1,21 @@
+#!/bin/sh
+
+case "$WARI_DISTRO" in
+fedora)
+  add_yum_repo_url https://raw.githubusercontent.com/kororaproject/kp-korora-repos/master/upstream/korora.repo 
+  ;;
+rhel)
+  ;;
+centos)
+  ;;
+opensuse)
+  ;;
+ubuntu)
+  ;;
+arch)
+  # Spotify is in AUR 
+  ;;
+*)
+  echo "It only makes sense to add the Korora repo to Fedora."
+  ;;
+esac
