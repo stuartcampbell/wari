@@ -25,6 +25,9 @@ add_yum_repo_rpm() {
     RPM_PACKAGE_NAME="${RPM_PACKAGE_FULLNAME%.*}"
 
     if ! rpm -q --quiet $RPM_PACKAGE_NAME; then
+      if [ -z "${DNF}" ]; then
+        get_dnf
+      fi
       echo "sudo ${DNF} -y install $@"
       sudo ${DNF} -y install $@
     else
